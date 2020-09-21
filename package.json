@@ -1,0 +1,21 @@
+{
+  "name": "movie_api",
+  "version": "1.0.0",
+  "description": "Directors of movies",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "Patrick Burke",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "lodash": "^4.17.20"
+  },
+  "devDependencies": {
+    "eslint": "^7.9.0"
+  }
+}
