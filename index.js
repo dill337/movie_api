@@ -126,7 +126,7 @@ app.get('/movies/genre/:name', passport.authenticate('jwt', { session: false }),
 });
 
 //Get a user by Username
-app.get('/users/:Username', (req, res) => {
+app.get('/users/:Username', passport.authenticate('jwt', { session: false }), (req, res) => {
   Users.findOne({ Username: req.params.Username })
     .then((user) => {
       res.json(user);
@@ -139,7 +139,7 @@ app.get('/users/:Username', (req, res) => {
 
 
 //Update a user;s info by username
-app.put('/users/:Username', (req, res) => {
+app.put('/users/:Username', passport.authenticate('jwt', { session: false }), (req, res) => {
   let fields = Object.keys(req.body)
   let updateObject = {};
   fields.forEach((field) => {
@@ -209,13 +209,13 @@ app.delete('/users/:Username/Movies/:MovieID', passport.authenticate('jwt', { se
 
 
 //Delete a user by username
-app.delete('/users/:Username', (req, res) => {
+app.delete('/users/:Username', passport.authenticate('jwt', { session: false }), (req, res) => {
   Users.findOneAndRemove({ Username: req.params.Username })
     .then((user) => {
       if (!user) {
-        res.status(400).send(req.params.Username + 'was not found');
+        res.status(400).send(req.params.Username + ' was not found');
       } else {
-        res.status(200).send(req.params.Username + 'was deleted');
+        res.status(200).send(req.params.Username + ' was deleted');
       }
     })
     .catch((err) => {
