@@ -15,8 +15,15 @@ const { check, validationResult } = require('express-validator');
 const Movies = Models.Movie;
 const Users = Models.User;
 
-mongoose.connect('mongodb://localhost:27017/myFlixDB', {useNewUrlParser: true,
-  useUnifiedTopology: true });
+//mongoose.connect('mongodb://localhost:27017/myFlixDB', {useNewUrlParser: true,
+  //useUnifiedTopology: true });
+
+  //mongoose.connect('mongodb+srv://dill337:newpassword@dbclusters.ldlwd.mongodb.net/myFlixDB?retryWrites=true&w=majority',{useNewUrlParser: true,
+  //  useUnifiedTopology: true });)
+
+  mongoose.connect( process.env.CONNECTION_URI, {useNewUrlParser: true,
+    useUnifiedTopology: true });
+
 
 //let Movie = mongoose.model('Movie', movieSchema);
 //let User = mongoose.model('User', userSchema);
@@ -46,7 +53,7 @@ app.post('/users',
   //Can use .isLength({min: 5}) means minnium of 5 characters only allowed
   [
     check('Username', 'Username is required').isLength({min:5}),
-    check('Username', 'Username contains non alphanumeric characters - not allowed.').isAphanumeric(),
+    check('Username', 'Username contains non alphanumeric characters - not allowed.').isAlphanumeric(),
     check('Password', 'Password is required').not().isEmpty(),
     check('Email', 'Email does not appear to be valid').isEmail()
   ], (req, res) => {
@@ -288,6 +295,6 @@ app.delete('/movies/:title', (req, res) => {
 
 // listen for requests
 const port = process.env.PORT || 8080;
-app.listen(port, '0.0.0.0', () => {
+app.listen(port, '0.0.0.0',() => {
   console.log('Listening on Port ' + port);
 });
