@@ -1,0 +1,41 @@
+var movie2 = {
+  Title: "Braveheart",
+  Description: "William Wallace is the medieval Scottish patriot who is spurred into revolt against the English when the love of his life is slaughtered. Leading his army into battles that become a war, his advance into England threatens King Edward I's throne before he is captured and executed, but not before becoming a symbol for a free Scotland.",
+  Genre: {
+    Name: "Action",
+    Description: "Action film is a film genre in which the protagonist or protagonists are thrust into a series of events that typically include violence, extended fighting, physical feats and frantic chases."
+  },
+  Director: {
+    Name: "Mel Gibson",
+    Bio: "Mel Gibson is an American director, actor producer, and screenwriter.",
+    Birth: "1956",
+    Death: ""
+  },
+  ImagePath: "https://m.media-amazon.com/images/M/MV5BMzkzMmU0YTYtOWM3My00YzBmLWI0YzctOGYyNTkwMWE5MTJkXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_SY1000_CR0,0,677,1000_AL_.jpg",
+  Featured: true
+}
+
+db.movies.insertOne(movie2)
+
+mongoimport --uri mongodb+srv://dill337:newpassword@dbclusters.ldlwd.mongodb.net/myFlixDB --collection movies --type json --file movies.json
+
+newpassword
+
+
+mongoimport --uri mongodb+srv://dill337:<PASSWORD>@dbclusters.ldlwd.mongodb.net/<DATABASE> --collection <COLLECTION> --type <FILETYPE> --file <FILENAME>
+
+
+mongoimport -h mongodb+srv://dbclusters.ldlwd.mongodb.net --db myFlixDB --collection movies --authenticationDatabase admin --username dill337 --password newpassword --drop --file movies.json
+
+
+mongoimport "mongodb+srv://dbclusters.ldlwd.mongodb.net/" --db myFlixDB --collection users --authenticationDatabase admin --username dill337 --password newpassword --drop --file users.json
+
+
+
+mongo "mongodb+srv://dbclusters.ldlwd.mongodb.net/myFlixDB" --username dill337
+
+
+"Username": "Jim Lahey",
+"Password": "1234",
+"Email": "Jimmy33@yahoo.com",
+"Birthday": "1989-04-02
