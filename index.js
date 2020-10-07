@@ -4,12 +4,12 @@ const bodyParser = require('body-parser');
 const express = require("express"),
   morgan = require('morgan');
 const app = express();
+const cors = require('cors');
+  app.use(cors());
 app.use(bodyParser());
 let auth = require('./auth')(app);
 const passport = require('passport');
   require('./passport');
-const cors = require('cors');
-  app.use(cors());
 const { check, validationResult } = require('express-validator');
 
 const Movies = Models.Movie;
