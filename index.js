@@ -203,7 +203,7 @@ app.put('/users/:Username', passport.authenticate('jwt', { session: false }), (r
 });
 
 //add a movie to a user's list of favorites
-/*app.post('/users/:Username/Movies/:MovieID', passport.authenticate('jwt', { session: false }), (req, res) => {
+app.post('/users/:Username/Movies/:MovieID', passport.authenticate('jwt', { session: false }), (req, res) => {
   Users.findOneAndUpdate({ Username: req.params.Username }, {
     $push: { FavoriteMovies: req.params.MovieID }
   },
@@ -217,7 +217,7 @@ app.put('/users/:Username', passport.authenticate('jwt', { session: false }), (r
     }
   });
 });
-*/
+
 app.put('/users/:Username/Movies/:Title', passport.authenticate('jwt', { session: false }), (req, res) => {
   Users.findOneAndUpdate({ Username: req.params.Username }, {
     $push: { FavoriteMovies: req.params.Title }
