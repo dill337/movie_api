@@ -118,8 +118,8 @@ app.get('/movies', passport.authenticate('jwt', { session: false }), (req, res) 
 });
 
 //Get a movie by title
-app.get('/movies/:Title', passport.authenticate('jwt', { session: false }), (req, res) => {
-  Movies.findOne({ Title: req.params.Title })
+app.get('/movies/:_id', passport.authenticate('jwt', { session: false }), (req, res) => {
+  Movies.findOne({ _id: req.params._id })
     .then((movie) => {
       res.json(movie);
     })
@@ -164,6 +164,8 @@ app.get('/movies/:Title/genre', passport.authenticate('jwt', { session: false })
       res.status(500).send('Error: ' + err);
     });
 });
+
+
 
 
 //Get a user by Username
