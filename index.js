@@ -220,7 +220,7 @@ app.post('/users/:Username/Movies/:MovieID', passport.authenticate('jwt', { sess
   });
 });
 
-app.put('/users/:Username/Movies/:_id', (req, res) => {
+app.put('/users/:Username/Movies/:_id', passport.authenticate('jwt', { session: false }), (req, res) => {
   Users.findOneAndUpdate({ Username: req.params.Username }, {
     $push: { FavoriteMovies: req.params._id }
   },
@@ -242,7 +242,7 @@ app.delete('/users/:Username/Movies/:MovieID', passport.authenticate('jwt', { se
         res.status(400).send(req.params.MovieID + 'was not found');
       } else {
         let movieID = req.params.MovieID;
-        let favoriteMovies = user.FavoriteMovies.filter((movieid) => movieid === movieID)
+        let favoriteMovies = user.FavoriteMovies.filter((movieid) => movieid !== movieID)
         console.log(favoriteMovies);
         console.log(user.FavoriteMovies);
         Users.findOneAndUpdate({ Username: req.params.Username }, { $set: {
