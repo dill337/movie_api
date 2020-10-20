@@ -244,11 +244,12 @@ app.delete('/users/:Username/Movies/:MovieID', passport.authenticate('jwt', { se
         let movieID = req.params.MovieID;
         console.log(movieID);
         let movieIndex = user.FavoriteMovies.indexOf(movieID);
-        let newMovies = user.FavoriteMovies.splice(movieIndex,1);
+        let oldMovies = user.FavoriteMovies
+        oldMovies.splice(movieIndex,1);
         //let favoriteMovies = user.FavoriteMovies.filter((movieid) => movieid !== movieID)
-        console.log(newMovies);
+        console.log(oldMovies);
         Users.findOneAndUpdate({ Username: req.params.Username }, { $set: {
-          FavoriteMovies: newMovies
+          FavoriteMovies: oldMovies
         }},  { new: true }, //this line makes sure that the updated document is returned
           (err, updatedUser) => {
             if(err) {
