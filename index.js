@@ -118,8 +118,8 @@ app.get('/movies', passport.authenticate('jwt', { session: false }), (req, res) 
 });
 
 //Get a movie by title
-app.get('/movies/:_id', passport.authenticate('jwt', { session: false }), (req, res) => {
-  Movies.findOne({ _id: req.params._id })
+app.get('/movies/:id', passport.authenticate('jwt', { session: false }), (req, res) => {
+  Movies.findOne({ _id: req.params.id })
     .then((movie) => {
       res.json(movie);
     })
@@ -220,9 +220,9 @@ app.post('/users/:Username/Movies/:MovieID', passport.authenticate('jwt', { sess
   });
 });
 
-app.put('/users/:Username/Movies/:Title', passport.authenticate('jwt', { session: false }), (req, res) => {
+app.put('/users/:Username/Movies/:_id', passport.authenticate('jwt', { session: false }), (req, res) => {
   Users.findOneAndUpdate({ Username: req.params.Username }, {
-    $push: { FavoriteMovies: req.params.Title }
+    $push: { FavoriteMovies: req.params._id }
   },
   { new: true }, //this line makes sure updated document is returned
   (err, updatedUser) => {
