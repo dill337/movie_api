@@ -242,6 +242,7 @@ app.delete('/users/:Username/Movies/:MovieID', passport.authenticate('jwt', { se
         res.status(400).send(req.params.MovieID + 'was not found');
       } else {
         let movieID = req.params.MovieID;
+        console.log(movieID);
         let favoriteMovies = user.FavoriteMovies.filter((movieid) => movieid !== movieID)
         console.log(favoriteMovies);
         console.log(user.FavoriteMovies);
