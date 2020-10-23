@@ -1,0 +1,46 @@
+.goback {
+  color: red;
+}
+.movie-view-card {
+  padding: 25px;
+  max-width: 150px;
+}
+.movie-view-card .movie-view {
+  display: flex;
+  align-content: right;
+}
+.movie-view-card .movie-view .label {
+  font-weight: 700;
+}
+.movie-view-card .movie-view .title {
+  font-style: italic;
+}
+.movie-view-card .movie-view .movie-description,
+.movie-view-card .movie-view .movie-genre,
+.movie-view-card .movie-view .movie-director,
+.movie-view-card .movie-view .back-button {
+  display: flex;
+  flex-flow: column wrap;
+}
+.movie-view-card .movie-view .buttons-container {
+  padding: 30px 0 0 0;
+}
+
+.movie-title {
+  text-align: center;
+  font-weight: Bold;
+  font-size: 30px;
+}
+
+img {
+  width: 350px;
+  margin-left: 25%;
+}
+.button {
+  padding: 30px;
+}
+.my-flix {
+  color: steelblue;
+}
+
+/*# sourceMappingURL=/src.78399e21.css.map */
